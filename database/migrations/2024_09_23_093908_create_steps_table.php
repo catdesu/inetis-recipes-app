@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title', 50);
             $table->text('description');
             $table->integer('step_number');
+            $table->integer('prep_time');
         });
     }
 
