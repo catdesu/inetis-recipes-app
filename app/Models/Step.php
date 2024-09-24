@@ -29,7 +29,7 @@ class Step extends Model
         'title',
         'description',
         'step_number',
-        'prep_time'
+        'prep_time',
     ];
 
     /**

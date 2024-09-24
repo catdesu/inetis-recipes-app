@@ -29,7 +29,6 @@ class Recipe extends Model
         'fk_users_id',
         'title',
         'description',
-        'step_number',
     ];
 
     /**
