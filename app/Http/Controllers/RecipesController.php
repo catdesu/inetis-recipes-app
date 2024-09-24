@@ -23,4 +23,16 @@ class RecipesController extends Controller
 
         return view('recipes.list', $data);
     }
+
+    public function showOne() {
+        
+    }
+
+    public function create() {
+        
+    }
+    
+    public function createPost() {
+        
+    }
 }

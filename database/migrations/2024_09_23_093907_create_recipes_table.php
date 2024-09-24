@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('fk_users_id')->references('id')->on('users');
             $table->string('title', 50);
             $table->text('description');
-            $table->text('image');
+            $table->string('image', 50);
         });
     }
 

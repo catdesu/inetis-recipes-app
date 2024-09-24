@@ -19,14 +19,19 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::group(['middleware' => 'guest'], function() {
+Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
 });
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/recipes', [RecipesController::class, 'showList'])->name('recipes');
+
+    Route::prefix('recipes')->group(function () {
+        Route::get('/', [RecipesController::class, 'showList']);
+        Route::get('/{id}', [RecipesController::class, 'showOne']);
+        Route::get('/create', [RecipesController::class, 'create']);
+    });
 });
