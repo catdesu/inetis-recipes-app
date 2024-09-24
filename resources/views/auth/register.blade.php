@@ -12,24 +12,44 @@
                         @csrf
                         <h2 class="fw-bold mb-2 text-uppercase mb-5">Register</h2>
 
-                        <div class="form-floating mb-4">
-                            <input type="text" id="username" name="username" class="form-control" placeholder="" />
-                            <label class="form-label" for="username">Username</label>
+                        <div class="mb-4">
+                            <div class="form-floating">
+                                <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" placeholder="{{ Request::old('username') }}" required />
+                                <label class="form-label" for="username">Username</label>
+                            </div>
+                            @error('username')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
-                        <div class="form-floating mb-4">
-                            <input type="email" id="email" name="email" class="form-control" placeholder="" />
-                            <label class="form-label" for="email">Email</label>
+                        <div class="mb-4">
+                            <div class="form-floating">
+                                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ Request::old('email') }}" required />
+                                <label class="form-label" for="email">Email</label>
+                            </div>
+                            @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
-                        <div class="form-floating mb-4">
-                            <input type="password" id="password" name="password" class="form-control" placeholder="" />
-                            <label for="password">Password</label>
+                        <div class="mb-4">
+                            <div class="form-floating">
+                                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="" required />
+                                <label for="password">Password</label>
+                            </div>
+                            @error('password')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-                        
-                        <div class="form-floating mb-4">
-                            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="" />
-                            <label for="confirm_password">Confirm Password</label>
+
+                        <div class="mb-4">
+                            <div class="form-floating">
+                                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="" required />
+                                <label for="password_confirmation">Confirm Password</label>
+                            </div>
+                            @error('password_confirmation')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <button class="btn btn-outline-primary btn-lg px-5" type="submit">Register</button>

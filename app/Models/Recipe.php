@@ -11,6 +11,8 @@ class Recipe extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
@@ -33,7 +35,7 @@ class Recipe extends Model
     /**
      * Get the user that owns the Recipe
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function user(): BelongsTo
     {

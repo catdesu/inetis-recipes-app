@@ -13,13 +13,25 @@
                         <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                         <p class="mb-5">Please enter your login and password!</p>
 
+                        @if(Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
+                        
+                        @if(Session::has('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ Session::get('error') }}
+                            </div>
+                        @endif
+
                         <div class="form-floating mb-4">
-                            <input type="email" id="email" name="email" class="form-control" placeholder="" />
+                            <input type="email" id="email" name="email" class="form-control" placeholder="" required />
                             <label class="form-label" for="email">Email</label>
                         </div>
 
                         <div class="form-floating mb-4">
-                            <input type="password" id="password" name="password" class="form-control" placeholder="" />
+                            <input type="password" id="password" name="password" class="form-control" placeholder="" required />
                             <label for="password">Password</label>
                         </div>
 
