@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('fk_recipes_id');
             $table->foreign('fk_recipes_id')->references('id')->on('recipes');
-            $table->string('title', 50);
+            $table->string('title', 50)->nullable();
             $table->text('description');
             $table->integer('step_number');
-            $table->integer('prep_time');
+            $table->integer('prep_time')->nullable();
         });
     }
 
