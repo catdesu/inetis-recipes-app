@@ -14,7 +14,7 @@
 
                         <div class="mb-4">
                             <div class="form-floating">
-                                <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" placeholder="{{ Request::old('username') }}" required />
+                                <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ Request::old('username') }}" placeholder="" required />
                                 <label class="form-label" for="username">Username</label>
                             </div>
                             @error('username')
@@ -24,7 +24,7 @@
 
                         <div class="mb-4">
                             <div class="form-floating">
-                                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ Request::old('email') }}" required />
+                                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ Request::old('email') }}" placeholder="" required />
                                 <label class="form-label" for="email">Email</label>
                             </div>
                             @error('email')

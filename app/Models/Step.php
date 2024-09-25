@@ -28,7 +28,6 @@ class Step extends Model
         'fk_recipes_id',
         'title',
         'description',
-        'step_number',
         'prep_time',
     ];
 
