@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Step;
 use Illuminate\Foundation\Http\FormRequest;
 
 class EditStepPostRequest extends FormRequest
@@ -11,7 +12,11 @@ class EditStepPostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $id = $this->route('id');
+
+        $step = Step::find($id);
+
+        return auth()->id() === $step->recipe->fk_users_id;
     }
 
     /**

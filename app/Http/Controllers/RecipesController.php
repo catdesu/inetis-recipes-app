@@ -80,7 +80,7 @@ class RecipesController extends Controller
 
         $recipe->save();
 
-        return redirect('recipes');
+        return redirect('recipes')->with('success', 'Recipe created successfully!');
     }
 
     /**
@@ -134,7 +134,7 @@ class RecipesController extends Controller
 
         $recipe->save();
 
-        return redirect("recipes/$id");
+        return redirect("recipes/$id")->with('success', 'Recipe updated successfully!');
     }
  
     /**
@@ -178,6 +178,6 @@ class RecipesController extends Controller
             $recipe->delete();
         }
         
-        return redirect('recipes');
+        return redirect('recipes')->with('success', 'Recipe deleted successfully!');
     }
 }

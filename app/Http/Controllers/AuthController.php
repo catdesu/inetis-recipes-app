@@ -37,7 +37,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        return redirect('/login')->with('success', 'Registered successfully');
+        return redirect('/login')->with('success', 'Successfully registered');
     }
 
     /**
@@ -58,7 +58,7 @@ class AuthController extends Controller
         $validated = $request->validated();
 
         if (Auth::attempt($validated)) {
-            return redirect('/recipes')->with('success', 'Logged in successfully');
+            return redirect('/recipes')->with('success', 'Successfully logged in');
         }
 
         return back()->with('error', 'Incorrect email or password.');

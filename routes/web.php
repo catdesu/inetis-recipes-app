@@ -34,19 +34,27 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', [RecipesController::class, 'showList'])->name('recipes');
         Route::get('/create', [RecipesController::class, 'create'])->name('recipes.create');
         Route::post('/create', [RecipesController::class, 'createPost'])->name('recipes.create');
-        Route::get('/edit/{id}', [RecipesController::class, 'edit'])->name('recipes.edit');
-        Route::post('/edit/{id}', [RecipesController::class, 'editPost'])->name('recipes.edit');
-        Route::get('/delete/{id}', [RecipesController::class, 'delete'])->name('recipes.delete');
-        Route::post('/delete/{id}', [RecipesController::class, 'deletePost'])->name('recipes.delete');
-        Route::get('/{id}', [RecipesController::class, 'showOne'])->name('recipes.showOne');
+
+        Route::middleware('recipe.owner')->group(function () {
+            Route::get('/edit/{id}', [RecipesController::class, 'edit']);
+            Route::post('/edit/{id}', [RecipesController::class, 'editPost']);
+            Route::get('/delete/{id}', [RecipesController::class, 'delete']);
+            Route::post('/delete/{id}', [RecipesController::class, 'deletePost']);
+            Route::get('/{id}', [RecipesController::class, 'showOne']);
+        });
     });
-    
+
     Route::prefix('steps')->group(function () {
-        Route::get('/create/{recipeId}', [StepsController::class, 'create'])->name('steps.create');
-        Route::post('/create/{recipeId}', [StepsController::class, 'createPost'])->name('steps.create');
-        Route::get('/edit/{id}', [StepsController::class, 'edit'])->name('steps.edit');
-        Route::post('/edit/{id}', [StepsController::class, 'editPost'])->name('steps.edit');
-        Route::get('/delete/{id}', [StepsController::class, 'delete'])->name('steps.delete');
-        Route::post('/delete/{id}', [StepsController::class, 'deletePost'])->name('steps.delete');
+        Route::middleware('recipe.owner')->group(function () {
+            Route::get('/create/{id}', [StepsController::class, 'create']);
+            Route::post('/create/{id}', [StepsController::class, 'createPost']);
+        });
+
+        Route::middleware('step.owner')->group(function () {
+            Route::get('/edit/{id}', [StepsController::class, 'edit']);
+            Route::post('/edit/{id}', [StepsController::class, 'editPost']);
+            Route::get('/delete/{id}', [StepsController::class, 'delete']);
+            Route::post('/delete/{id}', [StepsController::class, 'deletePost']);
+        });
     });
 });

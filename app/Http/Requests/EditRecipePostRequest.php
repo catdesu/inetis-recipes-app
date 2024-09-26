@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Recipe;
 use Illuminate\Foundation\Http\FormRequest;
 
 class EditRecipePostRequest extends FormRequest
@@ -11,7 +12,11 @@ class EditRecipePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $id = $this->route('id');
+
+        $recipe = Recipe::find($id);
+
+        return auth()->id() === $recipe->fk_users_id;
     }
 
     /**

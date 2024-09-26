@@ -42,7 +42,7 @@ class StepsController extends Controller
 
         $step->save();
 
-        return redirect("recipes/$recipeId");
+        return redirect("recipes/$recipeId")->with('success', 'Step added successfully!');
     }
         
     /**
@@ -76,7 +76,7 @@ class StepsController extends Controller
 
         $step->save();
 
-        return redirect("recipes/$step->fk_recipes_id");
+        return redirect("recipes/$step->fk_recipes_id")->with('success', 'Step updated successfully!');
     }
     
     /**
@@ -107,6 +107,6 @@ class StepsController extends Controller
             $step->delete();
         }
         
-        return redirect("recipes/$step->fk_recipes_id");
+        return redirect("recipes/$step->fk_recipes_id")->with('success', 'Step deleted successfully!');
     }
 }
